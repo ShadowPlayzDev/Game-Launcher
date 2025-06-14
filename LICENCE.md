@@ -14,4 +14,5 @@ The only requirements are that you include the original copyright notice and the
   "name": "Steven",
   "email": "hello@steve.is-a.dev",
   "url": "https://steve.is-a.dev"
-}```
+}
+```
