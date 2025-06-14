@@ -21,7 +21,7 @@ Follow these steps to install and run the Game Launcher:
     * Open **GitHub Desktop**.
     * Click on **File** > **Clone Repository...**
     * In the "URL" tab, paste the repository URL:
-        ```[https://github.com/ShadowPlayzDev/Game-Launcher.git](https://github.com/ShadowPlayzDev/Game-Launcher.git)```
+        ```https://github.com/ShadowPlayzDev/Game-Launcher.git```
     * Choose a **Local Path** on your computer where you want to save the project.
     * Click the **Clone** button.
 
