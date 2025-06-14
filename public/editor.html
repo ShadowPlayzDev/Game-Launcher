@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+        font-src 'self' https://fonts.gstatic.com;
+        img-src 'self' https://via.placeholder.com data:;
+        connect-src 'self' https://steveow.vercel.app;
+    ">
+    <title>Add Games</title>
+    <link href="css/app.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white font-sans">
+
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6">Edit Games</h1>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Add New Game</h2>
+            <form id="add-game-form">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label for="game-name" class="block text-gray-400 text-sm font-bold mb-2">Game Name:</label>
+                        <input type="text" id="game-name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" required>
+                    </div>
+                    <div>
+                        <label for="game-path" class="block text-gray-400 text-sm font-bold mb-2">Game Path:</label>
+                        <input type="text" id="game-path" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="game-coverart" class="block text-gray-400 text-sm font-bold mb-2">Cover Art URL (Optional):</label>
+                    <input type="url" id="game-coverart" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" placeholder="e.g., https://example.com/cover.jpg">
+                </div>
+
+                <h3 class="text-xl font-semibold mb-3 mt-6">Launch Options</h3>
+                <div id="launch-options-container" class="space-y-4 mb-4">
+                    <div class="launch-option-item grid grid-cols-1 md:grid-cols-5 gap-4 items-end">
+                        <div class="md:col-span-2">
+                            <label class="block text-gray-400 text-sm font-bold mb-2">Type (e.g., Epic Games, Steam):</label>
+                            <input type="text" class="launch-type shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" value="Default Launch" required>
+                        </div>
+                        <div class="md:col-span-3">
+                            <label class="block text-gray-400 text-sm font-bold mb-2">Command (e.g., com.epicgames.launcher://... or C:\game.exe):</label>
+                            <input type="text" class="launch-command shadow appearance-none border rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600" required>
+                        </div>
+                        </div>
+                </div>
+                <button type="button" id="add-launch-option-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mb-4">Add Another Launch Option</button>
+
+                <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Game</button>
+            </form>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Scan for Games</h2>
+            <button type="button" id="scan-games-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Scan Default Game Directories</button>
+            <p id="scan-status-message" class="hidden mt-4 p-3 rounded text-sm"></p>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold mb-4">Your Current Games</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-700">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Name</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Path</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Cover</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Launch Options</th>
+                            <th class="px-4 py-2 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="games-table-body" class="divide-y divide-gray-700">
+                        </tbody>
+                </table>
+            </div>
+            <p id="no-games-editor-message" class="text-gray-400 text-center mt-4">No games added yet.</p>
+        </div>
+
+    </div>
+
+    <script src="js/editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "Game Launcher",
+  "version": "1.0.0",
+  "description": "A modern game launcher built with Electron, HTML, CSS, and JavaScript.",
+  "main": "main.js",
+  "scripts": {
+    "start": "npm run build-css && electron .",
+    "build-css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/style.css --minify",
+    "watch-css": "tailwindcss -i ./public/css/tailwind.css -o ./public/css/style.css --watch",
+    "build": "electron-builder"
+  },
+  "keywords": ["game", "launcher", "electron", "html", "css", "javascript", "tailwind"],
+  "author": {
+    "name": "Steven",
+    "email": "hello@steve.is-a.dev",
+    "url": "https://steve.is-a.dev"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "tailwindcss": "^3.4.4",
+    "postcss": "^8.4.38",
+    "autoprefixer": "^10.4.19",
+    "electron-builder": "^24.13.5"
+  },
+  "build": {
+    "appId": "com.steven.gamelauncher",
+    "productName": "Game Launcher",
+    "win": {
+      "target": ["nsis"]
+    },
+    "directories": {
+      "output": "dist"
+    }
+  }
+}

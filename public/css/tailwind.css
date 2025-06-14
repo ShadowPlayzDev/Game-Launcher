@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .window-control-btn {
+        @apply text-white hover:bg-gray-700 focus:outline-none rounded;
+        padding: 8px;
+        margin-left: 8px;
+        line-height: 0;
+    }
+}

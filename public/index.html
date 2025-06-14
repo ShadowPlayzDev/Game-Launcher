@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Launcher</title>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://via.placeholder.com; connect-src 'self' https://steveow.vercel.app;">
+
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex flex-col">
+
+<div class="p-4 flex justify-between items-center bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-10">
+    <h1 class="text-3xl font-bold">Game Launcher</h1>
+    <div class="flex items-center">
+        <button id="edit-games-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md ml-4">Edit Games</button>
+        <button id="minimize-btn" class="window-control-btn">
+            <i class="material-icons">minimize</i>
+        </button>
+        <button id="maximize-btn" class="window-control-btn">
+            <i class="material-icons">crop_square</i>
+        </button>
+        <button id="close-btn" class="window-control-btn">
+            <i class="material-icons">close</i>
+        </button>
+    </div>
+</div>
+<div class="flex-grow p-6 mt-16"> <h2 class="text-2xl font-semibold mb-4">Your Games</h2>
+    <div id="games-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+        </div>
+    <p id="no-games-message" class="text-gray-400 mt-4 hidden">No games found. Click 'Edit Games' to add some!</p>
+</div>
+
+    <div id="preferences-modal" class="hidden fixed inset-0 flex items-center justify-center z-50 modal-overlay">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-xl w-11/12 max-w-lg">
+            <h2 class="text-2xl font-bold mb-6 text-center">Welcome! Let's set up your preferences.</h2>
+            <div class="mb-4">
+                <label for="lang-select" class="block text-gray-300 text-sm font-bold mb-2">Language:</label>
+                <select id="lang-select" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600">
+                    <option value="en-us">English (US)</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                </select>
+            </div>
+            <div class="mb-6">
+                <label for="theme-select" class="block text-gray-300 text-sm font-bold mb-2">App Theme:</label>
+                <select id="theme-select" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-gray-700 border-gray-600">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+            <div class="flex justify-center">
+                <button id="save-preferences-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="scan-modal" class="hidden fixed inset-0 flex items-center justify-center z-50 modal-overlay">
+        <div class="bg-gray-800 p-8 rounded-lg shadow-xl w-11/12 max-w-lg text-center">
+            <h2 class="text-2xl font-bold mb-6">Want to auto-scan for games now?</h2>
+            <div class="flex justify-center gap-4">
+                <button id="scan-yes-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline">Yes</button>
+                <button id="scan-no-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline">No</button>
+            </div>
+        </div>
+    </div>
+
+<div id="game-detail-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
+    <div class="bg-gray-800 rounded-lg shadow-xl w-11/12 max-w-2xl p-6 relative">
+        <button id="close-detail-modal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-100 focus:outline-none">
+            <i class="material-icons">close</i>
+        </button>
+        <div id="game-detail-content">
+            </div>
+    </div>
+</div>
+
+<div id="preferences-modal" class="hidden fixed inset-0 flex items-center justify-center z-50 modal-overlay">
+    </div>
+
+<div id="scan-modal" class="hidden fixed inset-0 flex items-center justify-center z-50 modal-overlay">
+    </div>
+
+<script src="js/renderer.js"></script>
+</body>
+</html>
