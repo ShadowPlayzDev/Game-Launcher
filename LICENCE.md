@@ -1,6 +1,6 @@
 # Game Launcher
 A modern game launcher built with Electron, HTML, Tailwind CSS, and JavaScript.
-[MIT LICENCE](https://opensource.org/license/mit)
+[MIT Licence](https://opensource.org/license/mit)
 ---
 ## License
 2025 Steven
